@@ -17,12 +17,23 @@ with open("../data/task1_test.json", "r") as f:
     test = json.load(f)
 
 test_word = []
+test_len = []
+id = {}
 for item in test:
-    test_word.extend(item["text"].split(" "))
+    try:
+        r = id[item["id"]]
+    except:
+        id[item["id"]] = 1
+        n_words = item["text"].split(" ")
+        test_len.append(len(n_words))
+        test_word.extend(n_words)
+
 
 print(len(test_word))
 print(len(set(test_word)))
-
+print(min(test_len))
+print(max(test_len))
+print(sum(test_len)/len(test_len))
 
 tech = {}
 for item in train:
