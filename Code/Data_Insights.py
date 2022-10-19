@@ -46,11 +46,17 @@ for index, item in enumerate(sorted_list):
             dic["others"] = 0
 
 print(dic)
+
+import matplotlib as mpl
+mpl.rcParams['xtick.labelsize'] = 13
 color_1 = "darkorange"
 color_2 = "royalblue"
 fig = plt.figure()
 
-plt.bar(range(len(dic)), list(dic.values()), align='center', color=color_2)
+color_list = [color_2] * 8
+color_list.append(color_1)
+
+plt.bar(range(len(dic)), list(dic.values()), align='center', color=color_list, edgecolor = color_2)
 plt.xticks(range(len(dic)), list(dic.keys()), rotation=90)
 plt.tight_layout()
 plt.savefig("img/tech_distribution.pdf", format='pdf')
